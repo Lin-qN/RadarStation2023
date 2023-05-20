@@ -632,11 +632,11 @@ void far_distPointCallback(const radar_msgs::dist_points &input) {
             point.z = calcWorld.at<double>(2, 0);
             if (red_or_blue == 0) {
                 if (input.data[i].id == 5) {
-                    point.y = 0.19048;
+                    point.y = y * 28000;
                     our_guard.x = x * 15000;
                 }
                 if (input.data[i].id == 11) {
-                    point.y = 0.80952;
+                    point.y = y * 28000;
                     enemy_guard.x = x * 15000;
                 }
                 if (input.data[i].id == 0) {
@@ -646,11 +646,11 @@ void far_distPointCallback(const radar_msgs::dist_points &input) {
                 }
             } else {
                 if (input.data[i].id == 11) {
-                    point.y = 0.19048;
+                    point.y = y * 28000;
                     our_guard.x = x * 15000;
                 }
                 if (input.data[i].id == 5) {
-                    point.y = 0.80952;
+                    point.y = y * 28000;
                     enemy_guard.x = x * 15000;
                 }
                 if (input.data[i].id == 6) {
@@ -718,11 +718,11 @@ void close_distPointCallback(const radar_msgs::dist_points &input) {
             point.z = calcWorld.at<double>(2, 0);
             if (red_or_blue == 0) {
                 if (input.data[i].id == 5) {
-                    point.y = 0.19048;
+                    point.y = y * 28000;
                     our_guard.x = x * 15000;
                 }
                 if (input.data[i].id == 11) {
-                    point.y = 0.80952;
+                    point.y = y * 28000;
                     enemy_guard.x = x * 15000;
                 }
                 if (input.data[i].id == 0) {
@@ -732,11 +732,11 @@ void close_distPointCallback(const radar_msgs::dist_points &input) {
                 }
             } else {
                 if (input.data[i].id == 11) {
-                    point.y = 0.19048;
+                    point.y = y * 28000;
                     our_guard.x = x * 15000;
                 }
                 if (input.data[i].id == 5) {
-                    point.y = 0.80952;
+                    point.y = y * 28000;
                     enemy_guard.x = x * 15000;
                 }
                 if (input.data[i].id == 6) {

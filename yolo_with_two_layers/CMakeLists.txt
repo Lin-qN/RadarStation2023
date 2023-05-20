@@ -42,8 +42,8 @@ link_directories(/usr/local/cuda-10.2/lib64)
 #include_directories(include)
 # tensorrt
 
-include_directories(/home/chris/TensorRT-7.0.0.11/include/)
-link_directories(/home/chris/TensorRT-7.0.0.11/lib/)
+include_directories(/home/lin/TensorRT-8.0.0.3/include/)
+link_directories(/home/lin/TensorRT-8.0.0.3/lib/)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Ofast -g -Wfatal-errors -D_MWAITXINTRIN_H_INCLUDED")
 cuda_add_library(myplugins2 SHARED src/yololayer.cu)

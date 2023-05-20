@@ -16,7 +16,7 @@ find_package(catkin REQUIRED COMPONENTS
  std_msgs
 # ros_dynamic_test
 )
-find_package( OpenCV 4 REQUIRED )
+find_package( OpenCV 4.2.0 REQUIRED )
 catkin_package()
 include_directories(
  include

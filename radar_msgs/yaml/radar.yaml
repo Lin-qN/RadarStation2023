@@ -1,5 +1,5 @@
 battle_state:
-  battle_color: red
+  battle_color: blue
   fps_mode: 0
 
 
@@ -8,20 +8,20 @@ image_width: 1280
 image_height: 1024
 sensor_far:
   deviceID: 0
-  exp_time: 25000
+  exp_time: 65000
   fps: 400
   camera_name: changjiao
   camera_matrix:
-    zerozero: 1946.307691
-    zerotwo: 677.359551
-    oneone: 1924.857445
-    onetwo: 546.888763
+    zerozero: 1890.751574
+    zerotwo: 645.397327
+    oneone: 1883.882471
+    onetwo: 529.402852
     twotwo: 1.0
   distortion_coefficient:
-    zero:  -0.098207
-    one: 0.159655
-    two: 0.000854
-    three: 0.004972
+    zero: -0.110864
+    one: 0.067284
+    two: -0.000661
+    three: 0.001910
     four: 0.000000
   uni_matrix:
     zerozero: 0.21985
@@ -55,19 +55,19 @@ sensor_far:
 
 sensor_close:
   deviceID: 1
-  exp_time: 28000
+  exp_time: 108000
   camera_name: guangjiao
   camera_matrix:
-    zerozero: 1854.425947
-    zerotwo: 691.638391
-    oneone: 1834.091532
-    onetwo: 496.069464
+    zerozero: 1854.708250
+    zerotwo: 661.706219
+    oneone: 1847.979719
+    onetwo: 512.214798
     twotwo: 1.0
   distortion_coefficient:
-    zero: -0.100300
-    one: 0.083467
-    two: 0.000241
-    three: 0.001856
+    zero: -0.089024
+    one: 0.390152
+    two: 0.000047
+    three: 0.002143
     four: 0.000000
   uni_matrix:
     zerozero: -0.274411

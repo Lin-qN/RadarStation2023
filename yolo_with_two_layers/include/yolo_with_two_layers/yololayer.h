@@ -19,7 +19,7 @@ namespace Yolo
     static constexpr int MAX_OUTPUT_BBOX_COUNT = 1000;
     static constexpr int CLASS_NUM_CAR = 2;
     static constexpr int CLASS_NUM_NUMBER = 12;
-    static constexpr int INPUT_H_CAR = 512;  // yolov5's input height and width must be divisible by 32.
+    static constexpr int INPUT_H_CAR = 640;  // yolov5's input height and width must be divisible by 32.
     static constexpr int INPUT_W_CAR = 640;
     static constexpr int INPUT_H_NUMBER = 128;  // yolov5's input height and width must be divisible by 32.
     static constexpr int INPUT_W_NUMBER = 128;

@@ -18,7 +18,7 @@
 #define DEVICE 0  // GPU id
 #define NMS_THRESH 0.4
 #define CONF_THRESH 0.5
-#define BATCH_SIZE_NUMBER 8
+#define BATCH_SIZE_NUMBER 1
 #define BATCH_SIZE_CAR 1
 #define MAX_IMAGE_INPUT_SIZE_THRESH 3000 * 3000 // ensure it exceed the maximum size in the input images !
 
@@ -101,8 +101,8 @@ radar_msgs::yolo_points rect2msg(std::vector<Yolo::Detection> yolo_detection, cv
 int main(int argc, char **argv) {
     cudaSetDevice(DEVICE);
 
-    std::string engine_name_car = std::string(PACK_PATH) + "/yolov5s_car.engine";
-    std::string engine_name_number = std::string(PACK_PATH) + "/yolov5s_number.engine";
+    std::string engine_name_car = std::string(PACK_PATH) + "/bestcar.engine";
+    std::string engine_name_number = std::string(PACK_PATH) + "/bestnum.engine";
 
     // deserialize the .engine and run inference
     std::ifstream file_car(engine_name_car, std::ios::binary);

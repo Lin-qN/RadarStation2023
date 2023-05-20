@@ -20,7 +20,7 @@ public:
   int    GetFrame(Mat& frame,bool is_color);
   int    Stop();
   int    Uninit();
-  int    SetExposureTime(bool auto_exp, double exp_time = 10000);
+  int    SetExposureTime(bool auto_exp, double exp_time = 50000);
   double GetExposureTime();
   int    SetLargeResolution(bool if_large_resolution);
   Size   GetResolution();
