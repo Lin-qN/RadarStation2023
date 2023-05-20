@@ -104,11 +104,9 @@ Ubuntu20.04(操作系统), CLion(软件开发环境)
 ## 项目结构
 
 ├── radar_station2022  
-│   ├── calibrateCamera 相机标定测试包，已废弃  
 │   ├── CMakeLists.txt  
 │   ├── dart_detect 一个未完成的飞镖检测节点  
-│   ├── detect_mineral 一个未完成的落矿检测节点  
-│   ├── displayer_app 旧的UI节点  
+│   ├── detect_mineral 一个未完成的落矿检测节点    
 │   ├── displayer_qt5 目前使用的UI  
 │   │   ├── CMakeLists.txt  
 │   │   ├── include  
@@ -150,10 +148,8 @@ Ubuntu20.04(操作系统), CLion(软件开发环境)
 │   │   ├── CMakeLists.txt  
 │   │   ├── package.xml  
 │   │   └── src  
-│   │       ├── get_depth_node.cpp  
-│   │       └── project 使用CUDA加速投影，已废弃  
-│   ├── getPictures 拍图节点，与主程序无关  
-│   ├── hp_limit_helper 旧UI用于获取车辆最高血量的节点，已废弃  
+│   │       └── get_depth_node.cpp  
+│   ├── getPictures 拍图节点，与主程序无关   
 │   ├── mv_driver 迈德威视驱动  
 │   │   ├── CMakeLists.txt  
 │   │   ├── include  
