@@ -7,16 +7,17 @@ bool if_shot = true;
 char ad[100] = { 0 };
 void imgCallback(const sensor_msgs::ImageConstPtr& msg)
 {
-    std::cout<<111<<std::endl;
     if (if_shot)
     {
-        cv::Mat img = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8)->image;
+        Mat img = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8)->image.clone();
         static int d = 0;
-        cv::imshow("shot", img);
+        imshow("shot", img);
         int k = cv::waitKey(0);
-        if(k == 'p' && !img.empty())
+        if(!img.empty())
         {
-            cv::imwrite("/home/lin/pictures/%d.jpg", img);
+            sprintf(ad, "/home/lin/pictures/%d.jpg", d++);
+            cv::imwrite(ad, img);
+            ROS_INFO("Get %d pictures!", d);
         }
     }
 }
@@ -26,7 +27,7 @@ int main(int argc, char **argv)
 {
     ros::init(argc, argv, "getPictures_node");
     ros::NodeHandle n;
-    ros::Subscriber sub = n.subscribe("/sensor_far/image_raw", 10, &imgCallback);
+    ros::Subscriber sub = n.subscribe("/sensor_far/image_raw", 1, &imgCallback);
     std::cout<<"ROS start!"<<std::endl;
     ros::spin();
 }
