@@ -70,18 +70,18 @@ sensor_close:
     three: 0.002143
     four: 0.000000
   uni_matrix:
-    zerozero: -0.47356
-    zeroone: -0.872741
-    zerotwo: -0.118592
-    zerothree: -0.125403
-    onezero: 0.0124396
-    oneone: 0.128006
-    onetwo: -0.991695
-    onethree: 0.0489395
-    twozero: 0.880674
-    twoone: -0.471103
-    twotwo: -0.0497619
-    twothree: -0.0925704
+    zerozero: 0.966344
+    zeroone: -0.16917
+    zerotwo: -0.193804
+    zerothree: -4.516
+    onezero: -0.193384
+    oneone: 0.0191141
+    onetwo: -0.980937
+    onethree: 0.666413
+    twozero: 0.16965
+    twoone: 0.985402
+    twotwo: -0.0142441
+    twothree: 7.28042
   point1:
     x: 7500.0
     y: 26302.0
