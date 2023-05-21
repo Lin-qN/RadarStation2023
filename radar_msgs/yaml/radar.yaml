@@ -104,6 +104,7 @@ small_map:
   small_map_shift_Y: 5
 
 yolo:
+  if_shot: true
   if_shot_far: false
   if_shot_close: false
 
