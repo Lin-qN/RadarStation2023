@@ -11,8 +11,8 @@ void imgCallback(const sensor_msgs::ImageConstPtr& msg)
     {
         Mat img = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8)->image.clone();
         static int d = 0;
-        imshow("shot", img);
-        int k = cv::waitKey(0);
+        //imshow("shot", img);
+        //int k = cv::waitKey(0);
         if(!img.empty())
         {
             sprintf(ad, "/home/lin/pictures/%d.jpg", d++);

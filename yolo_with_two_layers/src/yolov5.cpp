@@ -62,6 +62,10 @@ int inputIndex_number;
 int outputIndex_number;
 int inputIndex_car;
 int outputIndex_car;
+bool if_shot_far;
+bool if_shot_close;
+char ad_far[100] = { 0 };
+char ad_close[100] = { 0 };
 
 std::string btl_color = "blue";
 int btl_number = 1;
@@ -99,6 +103,8 @@ radar_msgs::yolo_points rect2msg(std::vector<Yolo::Detection> yolo_detection, cv
 }
 
 int main(int argc, char **argv) {
+    ros::param::get("/yolo/if_shot_far", if_shot_far);
+    ros::param::get("/yolo/if_shot_close", if_shot_close);
     cudaSetDevice(DEVICE);
 
     std::string engine_name_car = std::string(PACK_PATH) + "/bestcar.engine";
@@ -283,6 +289,15 @@ void far_imageCB(const sensor_msgs::ImageConstPtr &msg) {
             if (roi.empty()) {
                 continue;
             }
+            if (if_shot_far)
+            {
+                static int f = 0;
+                sprintf(ad_far, "/home/lin/pictures/far/%d.jpg", f++);
+                cv::imwrite(ad_far, roi);
+                ROS_INFO("Get %d pictures!", f);
+                ros::Rate loop_rate_far(1);
+                loop_rate_far.sleep();
+            }
             imgs_buffer[b] = roi;
             size_t size_roi = roi.cols * roi.rows * 3;
             size_t size_roi_dst = INPUT_H_NUMBER * INPUT_W_NUMBER * 3;
@@ -450,6 +465,15 @@ void close_imageCB(const sensor_msgs::ImageConstPtr &msg) {
             img_raw(r).copyTo(roi);
             if (roi.empty()) {
                 continue;
+            }
+            if (if_shot_close)
+            {
+                static int c = 0;
+                sprintf(ad_close, "/home/lin/pictures/close/%d.jpg", c++);
+                cv::imwrite(ad_close, roi);
+                ROS_INFO("Get %d pictures!", c);
+                ros::Rate loop_rate_close(1);
+                loop_rate_close.sleep();
             }
             imgs_buffer[b] = roi;
             size_t size_roi = roi.cols * roi.rows * 3;
