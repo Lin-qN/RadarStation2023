@@ -662,8 +662,8 @@ int main(int argc, char **argv) {
         count++;
         //分频为10hz，实现10hz定频发送
         if (count >= 10) {
-            sp.sendInteractiveMsgs(7);
-            sp.sendHeroMsgs();
+            //sp.sendInteractiveMsgs(7);
+            //sp.sendHeroMsgs();
             //逐一发送小地图目标点，当等待发布的点为空时接收一次新的消息
             if (!worldPoints.empty()) {
                 if (worldPoints[0].color) {
@@ -674,17 +674,17 @@ int main(int argc, char **argv) {
                 worldPoints.erase(worldPoints.begin());
             } else {
                 ros::spinOnce();
-//                for (int i = 0; i < 10; i++) {
-//                    car_point carPoint;
-//                    carPoint.point = Point2f(1.4 * i, 2.8 * i);
-//                    carPoint.id = 6;
-//                    if (i < 5) {
-//                        carPoint.color = true;
-//                    } else {
-//                        carPoint.color = false;
-//                    }
-//                    worldPoints.push_back(carPoint);
-//                }
+                for (int i = 0; i < 10; i++) {
+                    car_point carPoint;
+                    carPoint.point = Point2f(1.4 * i, 2.8 * i);
+                    carPoint.id = 6;
+                    if (i < 5) {
+                        carPoint.color = true;
+                    } else {
+                        carPoint.color = false;
+                    }
+                    worldPoints.push_back(carPoint);
+                }
                 //测试用
             }
             count = 0;
