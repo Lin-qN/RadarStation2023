@@ -8,7 +8,7 @@ image_width: 1280
 image_height: 1024
 sensor_far:
   deviceID: 0
-  exp_time: 65000
+  exp_time: 45000
   fps: 400
   camera_name: changjiao
   camera_matrix:
@@ -55,7 +55,7 @@ sensor_far:
 
 sensor_close:
   deviceID: 1
-  exp_time: 108000
+  exp_time: 48000
   camera_name: guangjiao
   camera_matrix:
     zerozero: 1854.708250
@@ -70,18 +70,18 @@ sensor_close:
     three: 0.002143
     four: 0.000000
   uni_matrix:
-    zerozero: 0.966344
-    zeroone: -0.16917
-    zerotwo: -0.193804
-    zerothree: -4.516
-    onezero: -0.193384
-    oneone: 0.0191141
-    onetwo: -0.980937
-    onethree: 0.666413
-    twozero: 0.16965
-    twoone: 0.985402
-    twotwo: -0.0142441
-    twothree: 7.28042
+    zerozero: -0.274411
+    zeroone: -0.960629
+    zerotwo: -0.0434813
+    zerothree: -0.113716
+    onezero: 0.041768
+    oneone: 0.0332674
+    onetwo: -0.998573
+    onethree: 0.0152128
+    twozero: 0.960705
+    twoone: -0.275836
+    twotwo: 0.0309946
+    twothree: -0.0207222
   point1:
     x: 7500.0
     y: 26302.0
@@ -104,7 +104,7 @@ small_map:
   small_map_shift_Y: 5
 
 yolo:
-  if_shot: true
+  if_shot: false
   if_shot_far: false
   if_shot_close: false
 

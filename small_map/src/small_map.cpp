@@ -47,7 +47,7 @@ int Y_shift = 0;
 vector<Point> our_R1 = {Point(0, 395), Point(0, 562), Point(33, 562), Point(33, 395)};
 vector<Point> our_R2 = {Point(76, 511), Point(160, 569), Point(247, 569), Point(259, 562), Point(235, 532),
                         Point(172, 530), Point(100, 477)};
-vector<Point> our_R3 = {Point(0, 572), Point(0, 705), Point(157, 705), Point(157, 654), Point(31, 572)};
+vector<Point> our_R3 = {Point(0, 572), Point(0, 705), Point(127, 705), Point(127, 639), Point(31, 572)};
 vector<Point> our_dafu = {Point(370, 558), Point(370, 609), Point(416, 609), Point(416, 558)};
 vector<Point> our_highway = {Point(415, 464), Point(415, 644), Point(450, 644), Point(450, 464)};
 vector<Point> our_outpost = {Point(414, 558), Point(414, 445), Point(317, 445), Point(317, 558)};
@@ -56,7 +56,7 @@ vector<Point> enemy_highway = {Point(35, 376), Point(35, 196), Point(0, 196), Po
 vector<Point> enemy_dafu = {Point(80, 282), Point(80, 231), Point(34, 231), Point(34, 282)};
 vector<Point> enemy_outpost = {Point(36, 282), Point(36, 395), Point(133, 395), Point(133, 282)};
 vector<Point> enemy_hero_hide = {Point(417, 333), Point(417, 445), Point(450, 445), Point(450, 333)};
-vector<Point> enemy_R3 = {Point(450, 268), Point(450, 135), Point(293, 135), Point(293, 186), Point(419, 268)};
+vector<Point> enemy_R3 = {Point(450, 268), Point(450, 135), Point(323, 135), Point(323, 201), Point(419, 268)};
 vector<Point> guard_forbidden_zone{Point(160, 647), Point(160, 705), Point(287, 705), Point(287, 647)};
 vector<Point> guidao_houbian{Point(0, 676), Point(0, 840), Point(450, 840), Point(450, 676)};
 uint8_t in_our_base_cnt;
@@ -632,11 +632,9 @@ void far_distPointCallback(const radar_msgs::dist_points &input) {
             point.z = calcWorld.at<double>(2, 0);
             if (red_or_blue == 0) {
                 if (input.data[i].id == 5) {
-                    point.y = y * 28000;
                     our_guard.x = x * 15000;
                 }
                 if (input.data[i].id == 11) {
-                    point.y = y * 28000;
                     enemy_guard.x = x * 15000;
                 }
                 if (input.data[i].id == 0) {
@@ -646,11 +644,9 @@ void far_distPointCallback(const radar_msgs::dist_points &input) {
                 }
             } else {
                 if (input.data[i].id == 11) {
-                    point.y = y * 28000;
                     our_guard.x = x * 15000;
                 }
                 if (input.data[i].id == 5) {
-                    point.y = y * 28000;
                     enemy_guard.x = x * 15000;
                 }
                 if (input.data[i].id == 6) {
@@ -718,11 +714,9 @@ void close_distPointCallback(const radar_msgs::dist_points &input) {
             point.z = calcWorld.at<double>(2, 0);
             if (red_or_blue == 0) {
                 if (input.data[i].id == 5) {
-                    point.y = y * 28000;
                     our_guard.x = x * 15000;
                 }
                 if (input.data[i].id == 11) {
-                    point.y = y * 28000;
                     enemy_guard.x = x * 15000;
                 }
                 if (input.data[i].id == 0) {
@@ -732,11 +726,9 @@ void close_distPointCallback(const radar_msgs::dist_points &input) {
                 }
             } else {
                 if (input.data[i].id == 11) {
-                    point.y = y * 28000;
                     our_guard.x = x * 15000;
                 }
                 if (input.data[i].id == 5) {
-                    point.y = y * 28000;
                     enemy_guard.x = x * 15000;
                 }
                 if (input.data[i].id == 6) {
