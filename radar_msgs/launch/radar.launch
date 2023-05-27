@@ -11,5 +11,5 @@
 <!--  <node name="getPictures_node" pkg="getPictures" type="getPictures_node" respawn="true"/>-->
   <node pkg="small_map" type="small_map" name="small_map" output="screen" respawn="true"/>
 <!--  <node pkg="serial_port" type="serial_port_node"  name="serial_port" output="screen" respawn="true" />-->
-<!--  <node name="game_state_publisher_node" pkg="game_state_publisher" type="game_state_publisher" respawn="true"/>-->
+<!--  <node name="game_state_publisher" pkg="game_state_publisher" type="game_state_publisher_node" respawn="true"/>-->
 </launch>

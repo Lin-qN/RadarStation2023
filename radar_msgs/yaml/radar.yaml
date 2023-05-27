@@ -1,5 +1,5 @@
 battle_state:
-  battle_color: blue
+  battle_color: red
   fps_mode: 0
 
 
@@ -8,7 +8,7 @@ image_width: 1280
 image_height: 1024
 sensor_far:
   deviceID: 0
-  exp_time: 45000
+  exp_time: 25000
   fps: 400
   camera_name: changjiao
   camera_matrix:
@@ -24,18 +24,18 @@ sensor_far:
     three: 0.001910
     four: 0.000000
   uni_matrix:
-    zerozero: 0.156744
-    zeroone: -0.987002
-    zerotwo: 0.035488
-    zerothree: 0.133574
-    onezero: -0.00997366
-    oneone: -0.0375122
-    onetwo: -0.999246
-    onethree: 0.0146435
-    twozero: 0.987589
-    twoone: 0.156272
-    twotwo: -0.0157238
-    twothree: 0.0119807
+    zerozero: 0.161993
+    zeroone: -0.985181
+    zerotwo: 0.0563563
+    zerothree: 0.124679
+    onezero: 0.06279
+    oneone: -0.0467041
+    onetwo: -0.996933
+    onethree: -0.00135317
+    twozero: 0.984792
+    twoone: 0.165035
+    twotwo: 0.0542938
+    twothree: 0.118454
   point1:
     x: 2461.0
     y: 16706.0
@@ -55,7 +55,7 @@ sensor_far:
 
 sensor_close:
   deviceID: 1
-  exp_time: 48000
+  exp_time: 38000
   camera_name: guangjiao
   camera_matrix:
     zerozero: 1854.708250
@@ -70,18 +70,18 @@ sensor_close:
     three: 0.002143
     four: 0.000000
   uni_matrix:
-    zerozero: 0.152199
-    zeroone: -0.987742
-    zerotwo: 0.0346555
-    zerothree: 0.119421
-    onezero: -0.00655642
-    oneone: -0.0360723
-    onetwo: -0.999328
-    onethree: 0.0381314
-    twozero: 0.988328
-    twoone: 0.151869
-    twotwo: -0.0119662
-    twothree: -0.0954662
+    zerozero: -0.339105
+    zeroone: -0.935727
+    zerotwo: -0.0970715
+    zerothree: -0.118438
+    onezero: 0.0747155
+    oneone: 0.076071
+    onetwo: -0.994299
+    onethree: 0.0127523
+    twozero: 0.937777
+    twoone: -0.344425
+    twotwo: 0.0441172
+    twothree: -0.0207261
   point1:
     x: 7500.0
     y: 26302.0
