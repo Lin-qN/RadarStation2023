@@ -662,8 +662,8 @@ int main(int argc, char **argv) {
         count++;
         //分频为10hz，实现10hz定频发送
         if (count >= 10) {
-            //sp.sendInteractiveMsgs(7);
-            //sp.sendHeroMsgs();
+            sp.sendInteractiveMsgs(7);
+            sp.sendHeroMsgs();
             //逐一发送小地图目标点，当等待发布的点为空时接收一次新的消息
             if (!worldPoints.empty()) {
                 if (worldPoints[0].color) {
