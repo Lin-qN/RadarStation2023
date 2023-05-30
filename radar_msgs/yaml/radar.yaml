@@ -102,36 +102,3 @@ sensor_close:
 small_map:
   small_map_shift_X: 30
   small_map_shift_Y: 5
-
-yolo:
-  if_shot: false
-  if_shot_far: false
-  if_shot_close: false
-
-calibration_default:
-  closeCam:
-    point1:
-      x:0.6178343892097473
-      y:0.1711442768573761
-    point2:
-      x:0.8598726391792297
-      y:0.3900497555732727
-    point3:
-      x:0.9434713125228882
-      y:0.39203980565071106
-    point4:
-      x:0.9482483863830566
-      y:0.1532338261604309
-  farCam:
-    point1:
-      x:0.14331209659576416
-      y:0.13731342554092407
-    point2:
-      x:0.05652866140007973
-      y:0.3850746154785156
-    point3:
-      x:0.13933120667934418
-      y:0.38407960534095764
-    point4:
-      x:0.6480891704559326
-      y:0.21194030344486237

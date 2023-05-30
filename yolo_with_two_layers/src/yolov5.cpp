@@ -62,10 +62,13 @@ int inputIndex_number;
 int outputIndex_number;
 int inputIndex_car;
 int outputIndex_car;
-bool if_shot_far;
-bool if_shot_close;
+bool if_shot_far = false;
+bool if_shot_close = false;
 char ad_far[100] = { 0 };
 char ad_close[100] = { 0 };
+static long imgnum_far = 18382;
+static long imgnum_close = 15751;
+
 
 std::string btl_color = "blue";
 int btl_number = 1;
@@ -103,8 +106,6 @@ radar_msgs::yolo_points rect2msg(std::vector<Yolo::Detection> yolo_detection, cv
 }
 
 int main(int argc, char **argv) {
-    ros::param::get("/yolo/if_shot_far", if_shot_far);
-    ros::param::get("/yolo/if_shot_close", if_shot_close);
     cudaSetDevice(DEVICE);
 
     std::string engine_name_car = std::string(PACK_PATH) + "/bestcar.engine";
@@ -291,11 +292,10 @@ void far_imageCB(const sensor_msgs::ImageConstPtr &msg) {
             }
             if (if_shot_far)
             {
-                static int f = 0;
-                sprintf(ad_far, "/home/lin/pictures/far/%d.jpg", f++);
+                sprintf(ad_far, "/home/lin/pictures/far/%ld.jpg", imgnum_far+=2);
                 cv::imwrite(ad_far, roi);
-                ROS_INFO("Get %d pictures!", f);
-                ros::Rate loop_rate_far(1);
+//                ROS_INFO("Get %d pictures!", imgnum_far);
+                ros::Rate loop_rate_far(5);
                 loop_rate_far.sleep();
             }
             imgs_buffer[b] = roi;
@@ -468,11 +468,10 @@ void close_imageCB(const sensor_msgs::ImageConstPtr &msg) {
             }
             if (if_shot_close)
             {
-                static int c = 0;
-                sprintf(ad_close, "/home/lin/pictures/close/%d.jpg", c++);
+                sprintf(ad_close, "/home/lin/pictures/close/%ld.jpg", imgnum_close+=2);
                 cv::imwrite(ad_close, roi);
-                ROS_INFO("Get %d pictures!", c);
-                ros::Rate loop_rate_close(1);
+//                ROS_INFO("Get %d pictures!", imgnum_close);
+                ros::Rate loop_rate_close(5);
                 loop_rate_close.sleep();
             }
             imgs_buffer[b] = roi;
