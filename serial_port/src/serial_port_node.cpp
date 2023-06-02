@@ -173,7 +173,7 @@ struct game_result_msg {
 
 //飞镖交互消息
 struct dart_interactivate_msg_data {
-    uint8_t dart_launch_opening_status; //fei biao fa she kou zhuang tai 1 guan bi 2 zheng zai huo dong 0 yi jing kai qi
+    uint8_t dart_launch_opening_status; //飞镖状态 1 关闭 2 正在活动 0 已经开启
     uint8_t dart_attack_target; //飞镖的打击目标,默认为前哨站;0:前哨站; 1:基地。
     uint16_t target_change_time; //切换打击目标时的比赛剩余时间,单位秒,从未切换默认为 0。
     uint16_t operate_launch_cmd_time; //最近一次操作手确定发射指令时的比赛剩余时间,单位秒, 初始值为 0。

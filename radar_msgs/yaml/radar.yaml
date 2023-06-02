@@ -1,5 +1,5 @@
 battle_state:
-  battle_color: red
+  battle_color: blue
   fps_mode: 0
 
 
@@ -8,7 +8,7 @@ image_width: 1280
 image_height: 1024
 sensor_far:
   deviceID: 0
-  exp_time: 23000
+  exp_time: 145000
   fps: 400
   camera_name: changjiao
   camera_matrix:
@@ -55,7 +55,7 @@ sensor_far:
 
 sensor_close:
   deviceID: 1
-  exp_time: 38000
+  exp_time: 158000
   camera_name: guangjiao
   camera_matrix:
     zerozero: 1854.708250

@@ -6,7 +6,7 @@
 <!--  <node pkg="mv_driver" type="mv_driver_node" name="sensor_far" output="screen" respawn="true" ns="sensor_far" />-->
 <!--  <node pkg="mv_driver" type="mv_driver_node" name="sensor_close" output="screen" respawn="true" ns="sensor_close" />-->
   <node name="displayer_qt5" pkg="displayer_qt5" type="displayer_qt5" respawn="true"/>
-  <node name="video_pub" pkg="video_pub" type="video_pub_node" respawn="true"/>
+<!--  <node name="video_pub" pkg="video_pub" type="video_pub_node" respawn="true"/>-->
   <node name="yolo_with_two_layers" pkg="yolo_with_two_layers" type="yolo_with_two_layers_node" respawn="true"/>
   <node name="get_depth_node" pkg="get_depth" type="get_depth_node" respawn="true"/>
 <!--  <node name="getPictures_node" pkg="getPictures" type="getPictures_node" respawn="true"/>-->

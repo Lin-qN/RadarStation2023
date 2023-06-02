@@ -23,7 +23,7 @@ Size large_size = Size(640, 512);
 Size small_size = Size(640, 480);
 //Size dist_size = large_size;
 Size dist_size = small_size;
-string video_source_far = "/media/lin/T7 Shield2/视频/0001.哔哩哔哩-第20场 西安交通大学 笃行战队 vs厦门理工学院 PFA战队 RoboMaster 2023 超级对抗赛·区域赛（南部赛区）.mp4";
+string video_source_far = "/media/lin/Windows-SSD1/Users/inshu/Desktop/视频/0001.哔哩哔哩-【RM2023南部冠军争夺战】最高燃！巅峰对决！ 深圳大学 RobotPilots VS 大连交通大学 TOE.mp4";
 string video_source_close = "/media/lin/Windows-SSD1/Users/inshu/Desktop/视频/0001.哔哩哔哩-第69场  西安交通大学 笃行战队 vs 深圳大学 RobotPilots战队 RoboMaster 2023 超级对抗赛·区域赛（南部赛区）.mp4";
 Mat img_show;
 
