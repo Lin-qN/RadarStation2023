@@ -6,8 +6,8 @@ using namespace cv;
 bool if_shot_far = false;
 bool if_shot_close = false;
 char ad[100] = { 0 };
-static long f = 9844;
-static long c = 7399;
+static long f = 2424;
+static long c = 2421;
 void farCallback(const sensor_msgs::ImageConstPtr& msg)
 {
     if (if_shot_far)
@@ -17,7 +17,7 @@ void farCallback(const sensor_msgs::ImageConstPtr& msg)
         //int k = cv::waitKey(0);
         if(!img.empty())
         {
-            sprintf(ad, "/home/lin/pictures/farall/%ld.jpg", f+=2);
+            sprintf(ad, "/home/lin/database/farall/images/%ld.jpg", f+=2);
             cv::imwrite(ad, img);
             ROS_INFO("Get %ld pictures!", f);
             ros::Rate loop_rate_far(5);
@@ -34,7 +34,7 @@ void closeCallback(const sensor_msgs::ImageConstPtr& msg)
         //int k = cv::waitKey(0);
         if(!img.empty())
         {
-            sprintf(ad, "/home/lin/pictures/closeall/%ld.jpg", c+=2);
+            sprintf(ad, "/home/lin/database/closeall/images/%ld.jpg", c+=2);
             cv::imwrite(ad, img);
             ROS_INFO("Get %ld pictures!", c);
             ros::Rate loop_rate_close(5);

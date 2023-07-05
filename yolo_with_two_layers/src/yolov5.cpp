@@ -66,8 +66,8 @@ bool if_shot_far = false;
 bool if_shot_close = false;
 char ad_far[100] = { 0 };
 char ad_close[100] = { 0 };
-static long imgnum_far = 18382;
-static long imgnum_close = 15751;
+static long imgnum_far = 0;
+static long imgnum_close = 1;
 
 
 std::string btl_color = "blue";
@@ -292,10 +292,10 @@ void far_imageCB(const sensor_msgs::ImageConstPtr &msg) {
             }
             if (if_shot_far)
             {
-                sprintf(ad_far, "/home/lin/pictures/far/%ld.jpg", imgnum_far+=2);
+                sprintf(ad_far, "/home/lin/database/far/images/%ld.jpg", imgnum_far+=2);
                 cv::imwrite(ad_far, roi);
 //                ROS_INFO("Get %d pictures!", imgnum_far);
-                ros::Rate loop_rate_far(5);
+                ros::Rate loop_rate_far(3);
                 loop_rate_far.sleep();
             }
             imgs_buffer[b] = roi;
@@ -468,10 +468,10 @@ void close_imageCB(const sensor_msgs::ImageConstPtr &msg) {
             }
             if (if_shot_close)
             {
-                sprintf(ad_close, "/home/lin/pictures/close/%ld.jpg", imgnum_close+=2);
+                sprintf(ad_close, "/home/lin/database/close/images/%ld.jpg", imgnum_close+=2);
                 cv::imwrite(ad_close, roi);
 //                ROS_INFO("Get %d pictures!", imgnum_close);
-                ros::Rate loop_rate_close(5);
+                ros::Rate loop_rate_close(3);
                 loop_rate_close.sleep();
             }
             imgs_buffer[b] = roi;

@@ -247,6 +247,7 @@ struct car_point {
     uint16_t id;
     Point2f point;
     bool color; //红色为0 蓝色为1
+    int life = 5;
 };
 uint8_t warn_state;
 
@@ -520,7 +521,32 @@ public:
 };
 
 serial_port sp;
-vector<car_point> worldPoints;
+map<int, car_point> worldPoints;
+void insert(car_point carPoint)
+{
+    auto pos = worldPoints.find(carPoint.id);
+    if(pos != worldPoints.end())
+    {
+        if(abs(carPoint.point.x-pos->second.point.x)+abs(carPoint.point.y-pos->second.point.y)<=6)
+        {
+            worldPoints.erase(pos);
+            worldPoints.insert(make_pair(carPoint.id, carPoint));
+        }
+        else
+        {
+            pos->second.life--;
+            if(!pos->second.life)
+            {
+                worldPoints.erase(pos);
+                worldPoints.insert(make_pair(carPoint.id, carPoint));
+            }
+        }
+    }
+    else
+    {
+        worldPoints.insert(make_pair(carPoint.id, carPoint));
+    }
+}
 
 /**
  * 目标世界坐标回调函数
@@ -535,33 +561,33 @@ void worldPointsCallback(const radar_msgs::points &msg) {
                 car_point carPoint;
                 carPoint.id = msg.data[i].id + 1;
                 carPoint.color = 0;
-                carPoint.point = Point2f((msg.data[i].x * 15.0), (msg.data[i].y * 28.0));
-                worldPoints.insert(worldPoints.begin(), carPoint);
+                carPoint.point = Point2f(28 - (msg.data[i].y * 28.0), (msg.data[i].x * 15.0));
+                insert(carPoint);
             } else if (msg.data[i].id == 5) {
                 car_point carPoint;
                 carPoint.id = 7;
                 carPoint.color = 0;
-                carPoint.point = Point((msg.data[i].x * 15.0), (msg.data[i].y * 28.0));
-                worldPoints.insert(worldPoints.begin(), carPoint);
+                carPoint.point = Point2f(28 - (msg.data[i].y * 28.0), (msg.data[i].x * 15.0));
+                insert(carPoint);
             } else if (msg.data[i].id == 12) {
                 car_point carPoint;
                 if (pubCount == 0) {
-                    carPoint.id = 6;
+                    carPoint.id = 5;
                 } else if (pubCount == 1) {
-                    carPoint.id = 9;
+                    carPoint.id = 6;
                 } else if (pubCount == 2) {
-                    carPoint.id = 10;
-                } else if (pubCount == 3) {
-                    carPoint.id = 11;
+                    carPoint.id = 7;
+//                } else if (pubCount == 3) {
+//                    carPoint.id = 2;
                 }
-                if (pubCount >= 3) {
+                if (pubCount >= 2) {
                     pubCount = 0;
                 } else {
                     pubCount++;
                 }
                 carPoint.color = 0;
-                carPoint.point = Point((msg.data[i].x * 15.0), (msg.data[i].y * 28.0));
-                worldPoints.insert(worldPoints.begin(), carPoint);
+                carPoint.point = Point2f(28 - (msg.data[i].y * 28.0), (msg.data[i].x * 15.0));
+                insert(carPoint);
             }
         }
     } else {
@@ -570,34 +596,34 @@ void worldPointsCallback(const radar_msgs::points &msg) {
                 car_point carPoint;
                 carPoint.id = msg.data[i].id - 5;
                 carPoint.color = 1;
-                carPoint.point = Point((msg.data[i].x * 15.0), (msg.data[i].y * 28.0));
-                worldPoints.insert(worldPoints.begin(), carPoint);
+                carPoint.point = Point2f(msg.data[i].y * 28.0, 15 - (msg.data[i].x * 15.0));
+                insert(carPoint);
             } else if (msg.data[i].id == 11) {
                 car_point carPoint;
                 carPoint.id = 7;
                 carPoint.color = 1;
-                carPoint.point = Point((msg.data[i].x * 15.0), (msg.data[i].y * 28.0));
-                worldPoints.insert(worldPoints.begin(), carPoint);
+                carPoint.point = Point2f(msg.data[i].y * 28.0, 15 - (msg.data[i].x * 15.0));
+                insert(carPoint);
             } else if (msg.data[i].id == 13) {
                 car_point carPoint;
                 carPoint.id = 6;
                 if (pubCount == 0) {
-                    carPoint.id = 6;
+                    carPoint.id = 5;
                 } else if (pubCount == 1) {
-                    carPoint.id = 9;
+                    carPoint.id = 6;
                 } else if (pubCount == 2) {
-                    carPoint.id = 10;
-                } else if (pubCount == 3) {
-                    carPoint.id = 11;
+                    carPoint.id = 7;
+//                } else if (pubCount == 3) {
+//                    carPoint.id = 2;
                 }
-                if (pubCount >= 3) {
+                if (pubCount >= 2) {
                     pubCount = 0;
                 } else {
                     pubCount++;
                 }
                 carPoint.color = 1;
-                carPoint.point = Point((msg.data[i].x * 15.0), (msg.data[i].y * 28.0));
-                worldPoints.insert(worldPoints.begin(), carPoint);
+                carPoint.point = Point2f(msg.data[i].y * 28.0, 15 - (msg.data[i].x * 15.0));
+                insert(carPoint);
             }
         }
     }
@@ -658,6 +684,7 @@ int main(int argc, char **argv) {
     ros::Rate loop(100);
     ROS_INFO_STREAM("Looping! ");
     int count = 0;
+    int num = 0;
     while (ros::ok()) {
         count++;
         //分频为10hz，实现10hz定频发送
@@ -666,10 +693,10 @@ int main(int argc, char **argv) {
             sp.sendHeroMsgs();
             //逐一发送小地图目标点，当等待发布的点为空时接收一次新的消息
             if (!worldPoints.empty()) {
-                if (worldPoints[0].color) {
-                    sp.sendMapMsgs(100 + worldPoints[0].id, worldPoints[0].point.x, worldPoints[0].point.y);
+                if (worldPoints.begin()->second.color) {
+                    sp.sendMapMsgs(100 + worldPoints.begin()->second.id, worldPoints.begin()->second.point.x, worldPoints.begin()->second.point.y);
                 } else {
-                    sp.sendMapMsgs(worldPoints[0].id, worldPoints[0].point.x, worldPoints[0].point.y);
+                    sp.sendMapMsgs(worldPoints.begin()->second.id, worldPoints.begin()->second.point.x, worldPoints.begin()->second.point.y);
                 }
                 worldPoints.erase(worldPoints.begin());
             } else {
@@ -683,7 +710,7 @@ int main(int argc, char **argv) {
 //                    } else {
 //                        carPoint.color = false;
 //                    }
-//                    worldPoints.push_back(carPoint);
+//                    insert(carPoint);
 //                }
                 //测试用
             }
